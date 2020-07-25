@@ -1,0 +1,11 @@
+<h3>日記作成</h3>
+<%= form_for(@diary) do |f| %>
+	<h5>タイトル</h5>
+	<%= f.text_field :diary_title %>
+
+	<h5>本文</h5>
+	<%= f.text_area :diary_body %>
+
+	<%= f.submit '投稿' %>
+
+	<% end %>

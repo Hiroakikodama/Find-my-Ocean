@@ -1,0 +1,26 @@
+<div class="container">
+	<div class="row">
+		<div class="col col-md-4"><%= render 'users/sidebar', user: current_user %></div>
+		<div class="col col-md-8">
+			<div class="diaries_area border rounded">
+				<% @diaries.each do |diary| %>
+				<%= attachment_image_tag diary, :image, size: "50x50", fallback: "no-image-mini.jpg" %>
+				<ul>
+					<li><%= diary.title %></li>
+				</ul>
+				<% end %>
+			</div>
+			<div class="pictuire_books_area border rounded">
+				<% @picture_books.each do |picture_book| %>
+				<%= attachment_image_tag picture_book, :image, size: "50x50", fallback: "no-image-mini.jpg" %>
+				<%= picture_book.fish_name %>
+				<% end %>
+			</div>
+			<div class="check_lists_area border rounded">
+				<% @check_lists.each do |check_list| %>
+				<%= check_list.list_title %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

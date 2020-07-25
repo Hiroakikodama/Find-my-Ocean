@@ -1,0 +1,2 @@
+module PictureBookImagesHelper
+end

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Find My Ocean</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <div class="header_title my-0 mr-md-auto font-weight-normal">
+      <h1>Find my Ocean</h1>
+    </div>
+      <nav class="my-2 my-md-0 mr-md-3">
+      <% if user_signed_in? %>
+        <%= link_to "マイページ", user_path(current_user), class: "p-2 text-dark" %>
+        <%= link_to "釣り人一覧", users_path, class: "p-2 text-dark" %>
+        <%= link_to "日記", diaries_path, class: "p-2 text-dark" %>
+        <%= link_to "図鑑", picture_books_path, class: "p-2 text-dark" %>
+        <%= link_to "チェックリスト", "check_lists", class: "p-2 text-dark" %>
+        <%= link_to "ログアウト", destroy_user_session_path, class: "p-2 text-dark", method: :delete %>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path, class: "p-2 text-dark" %>
+        <%= link_to "サインイン", new_user_session_path, class: "p-2 text-dark" %>
+      <% end %>
+      </nav>
+  </div>
+    <%= yield %>
+  </body>
+  <footer></footer>
+</html>

@@ -1,0 +1,14 @@
+<div class="border rounded">
+<h5>プロフィール</h5>
+	<table>
+		<tr><%= attachment_image_tag user, :image, size: "100x100", fallback: "no_image.jpg" %></tr>
+		<tr>
+			<th>ユーザーネーム</th>
+            <th><%= user.name %></th>
+		</tr>
+		<tr>
+			<th>自己紹介</th>
+			<th><%= user.introduction %></th>
+		</tr>
+	</table>
+</div>
