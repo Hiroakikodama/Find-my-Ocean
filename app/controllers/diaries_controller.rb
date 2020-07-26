@@ -1,22 +1,12 @@
 class DiariesController < ApplicationController
   def new
   	@diary = Diary.new
-    @diary.diary_images.build
   end
 
   def create
-  	@diary = Diary.new(diary_params)
-    @diary.user_id = current_user.id
-    @diary.image_id = 'test'
+  	@diary = current_user.diaries.build(diary_params)
     if @diary.save
-    # binding.pry
-       images = diary_params[:diary_images_images] #0番目にゴミが必ずあると仮定して、0番目のゴミを削除してからeachを回す。
-       images.delete_at(0) 
-       images.each do |di| #複数枚画像を登録するため、画像の枚数分、eachで画像を回す。
-        di = @diary.diary_images.build(image_id: di)
-        di.save
-       end
-        redirect_to diary_path(@diary.id)
+      redirect_to diary_path(@diary.id)
     else
       @diaries = Diary.all
       @user = current_user

@@ -1,2 +1,19 @@
-<h1>PictureBooks#index</h1>
-<p>Find me in app/views/picture_books/index.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="col col-md-4"><%= render 'users/sidebar', user: current_user %></div>
+		<div class="col col-md-8">
+			<h5>PictureBooks</h5>
+			<div class="border">
+				<% @picture_books.each do |picture_book| %>
+				<div class="picture_book-item clearfix">
+					<section class="picture_book-text">
+						<%= attachment_image_tag picture_book, :image, size: "50x50", fallback: "no-image-mini.jpg" %>
+						<h5 class="picture_book-text-headline"><%= link_to picture_book.fish_name, picture_book_path(picture_book) %></h5>
+						<p class="picture_book-date"><%= picture_book.created_at %></p>
+					</section>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

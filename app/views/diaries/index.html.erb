@@ -6,7 +6,6 @@
 			<div class="border">
 				<% @diaries.each do |diary| %>
 				<div class="diary-item clearfix">
-					<div class="diary-image"><%= attachment_image_tag diary, :image, size: "50x50", fallback: "no-image-mini.jpg" %></div>
 					<section class="diary-text">
 						<h5 class="diary-text-headline"><%= link_to diary.diary_title, diary_path(diary) %></h5>
 						<p class="diary-date"><%= diary.created_at %></p>

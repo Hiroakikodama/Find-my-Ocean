@@ -4,9 +4,9 @@
 		<div class="col col-md-8">
 			<div class="diaries_area border rounded">
 				<% @diaries.each do |diary| %>
-				<%= attachment_image_tag diary, :image, size: "50x50", fallback: "no-image-mini.jpg" %>
 				<ul>
-					<li><%= diary.title %></li>
+					<li><%= link_to diary.diary_title, diary_path(diary) %></li>
+					<%= diary.created_at %>
 				</ul>
 				<% end %>
 			</div>
