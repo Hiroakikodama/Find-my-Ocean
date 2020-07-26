@@ -1,11 +1,27 @@
-<h3>日記作成</h3>
-<%= form_for(@diary) do |f| %>
+<div class="container">
+<div class="error_message">
+  <% if @diary.errors.any? %>
+    <div id="error_explanation">
+    	<h2><%= @diary.errors.count %>件のエラーが発生しました。</h2>
+    	<ul>
+    		<%= @diary.errors.full_messages.each do |message| %>
+    		<li><%= message %></li>
+    		<% end %>
+    	</ul>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col col-md-10 text-center">
+	<%= form_for(@diary) do |f| %>
+	<h5>画像</h5>
+	<%= f.attachment_field :diary_images_images, multiple: true %>
 	<h5>タイトル</h5>
 	<%= f.text_field :diary_title %>
-
 	<h5>本文</h5>
 	<%= f.text_area :diary_body %>
-
-	<%= f.submit '投稿' %>
-
+	<%= f.submit "作成", class:"btn btn-block btn-base-1 mt-20" %>
 	<% end %>
+</div>
+</div>

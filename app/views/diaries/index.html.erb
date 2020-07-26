@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<div class="col col-md-4"><%= render 'users/sidebar', user: current_user %></div>
+		<div class="col col-md-8">
+			<h5>Diaries</h5>
+			<div class="border">
+				<% @diaries.each do |diary| %>
+				<div class="diary-item clearfix">
+					<div class="diary-image"><%= attachment_image_tag diary, :image, size: "50x50", fallback: "no-image-mini.jpg" %></div>
+					<section class="diary-text">
+						<h5 class="diary-text-headline"><%= link_to diary.diary_title, diary_path(diary) %></h5>
+						<p class="diary-date"><%= diary.created_at %></p>
+					</section>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
