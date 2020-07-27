@@ -16,6 +16,7 @@ class DiariesController < ApplicationController
 
   def index
     @diaries = Diary.all
+    @diary = Diary.new
   end
 
   def edit
@@ -31,6 +32,9 @@ class DiariesController < ApplicationController
   end
 
   def destroy
+    @diary = Diary.find(params[:id])
+    @diary.destroy
+    redirect_to diaries_path
   end
 
   private

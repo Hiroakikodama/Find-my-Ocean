@@ -3,3 +3,6 @@
 <% @diary.diary_images.each do |di| %>
 	<%= attachment_image_tag di, :image, size: "50x50", fallback: "no-image-mini.jpg" %>
 <% end %>
+            <% if @diary.user == current_user %>
+            <%= link_to "削除", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+            <% end %>

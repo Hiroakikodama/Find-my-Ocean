@@ -14,7 +14,7 @@
     <div class="header_title my-0 mr-md-auto font-weight-normal">
       <h1>Find my Ocean</h1>
     </div>
-      <nav class="my-2 my-md-0 mr-md-3">
+      <nav class="my-2 my-md-0 mr-md-3 navbar navbar-inverse navbar-fixed-top　bg-primary" role="navigation">
       <% if user_signed_in? %>
         <%= link_to "マイページ", user_path(current_user), class: "p-2 text-dark" %>
         <%= link_to "釣り人一覧", users_path, class: "p-2 text-dark" %>

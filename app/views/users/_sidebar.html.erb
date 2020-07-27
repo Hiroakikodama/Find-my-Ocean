@@ -12,8 +12,8 @@
 		</tr>
 	</table>
 	<div class="row">
-		<%= link_to edit_user_path(current_user) do %>
-		  <i class="btn btn-default glyphicon glyphicon-wrench"></i>
+		<% if @user.id == current_user.id %>
+		<%= link_to "プロフィール編集", edit_user_path(current_user), class:"btn btn-block btn-base-1 mt-20" %>
 		<% end %>
 	</div>
 </div>

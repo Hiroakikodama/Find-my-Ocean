@@ -15,9 +15,11 @@ class PictureBooksController < ApplicationController
 
   def index
     @picture_books = PictureBook.all
+    @picture_book = PictureBook.new
   end
 
   def show
+    @picture_book = PictureBook.find(params[:id])
   end
 
   def edit
@@ -26,7 +28,10 @@ class PictureBooksController < ApplicationController
   def update
   end
 
-  def desetroy
+  def destroy
+    @picture_book = PictureBook.find(params[:id])
+    @picture_book.destroy
+    redirect_to picture_books_path
   end
 
   private
