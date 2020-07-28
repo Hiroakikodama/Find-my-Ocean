@@ -2,18 +2,20 @@
 	<div class="row">
 		<div class="col col-md-4"><%= render 'users/sidebar', user: current_user %></div>
 		<div class="col col-md-8">
+		  <div class="create_area">
 			<h5>New Diary</h5>
 			<%= form_with(model: @diary) do |f| %>
             <h5>画像</h5>
             <%= f.attachment_field :diary_images_images, multiple: true %>
             <h5>タイトル</h5>
-            <%= f.text_field :diary_title %>
+            <%= f.text_field :diary_title, class:"form-control", placeholder:"タイトル" %>
             <h5>本文</h5>
-            <%= f.text_area :diary_body %>
-            <%= f.submit "作成", class:"btn btn-block btn-base-1 mt-20" %>
+            <%= f.text_area :diary_body, class:"form-control", placeholder:"本文" %>
+            <%= f.submit "作成", class:"btn btn-sticky" %>
             <% end %>
+          </div>
 			<h5>Diaries</h5>
-			<div class="border">
+			<div class="index_area">
 				<% @diaries.each do |diary| %>
 				<div class="diary-item clearfix">
 					<section class="diary-text">
@@ -22,6 +24,7 @@
 					</section>
 				</div>
 				<% end %>
+				<%= paginate @diaries %>
 			</div>
 		</div>
 	</div>

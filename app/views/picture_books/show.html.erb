@@ -4,14 +4,23 @@
 			<%= render 'users/sidebar', user: current_user %>
 		</div>
 		<div class="col col-8">
-			<h5><%= @picture_book.fish_name %></h5>
-			<%= attachment_image_tag @picture_book, :image, size: "300x300", fallback: "no-image-mini.jpg" %>
-			<p><%= @picture_book.point %></p>
-			<%= @picture_book.created_at %>
-			<p><%= @picture_book.discription %></p>
-
+			<div class="title">
+			    <h5 style="text-decoration:underline;"><%= @picture_book.fish_name %></h5>
+			    <ul style="list-style: none;">
+                  <li class="author-date"><%= @picture_book.user.name %></li>
+                  <li class="author-date"><%= @picture_book.created_at.strftime('%Y/%m/%d') %></li>
+                </ul>
+            </div>
+			<div class="image">
+			    <%= attachment_image_tag @picture_book, :image, size: "600x400", fallback: "no-image-mini.jpg" %>
+			</div>
+			<div class="comment">
+			    <p><%= @picture_book.discription %></p>
+			</div>
+			<br>
+			<%= link_to '一覧に戻る', picture_books_path, class:'btn btn-success' %>
             <% if @picture_book.user == current_user %>
-            <%= link_to "削除", picture_book_path(@picture_book), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger" %>
+            <%= link_to "削除", picture_book_path(@picture_book), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
             <% end %>
         </div>
     </div>

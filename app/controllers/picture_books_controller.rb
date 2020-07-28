@@ -14,7 +14,7 @@ class PictureBooksController < ApplicationController
   end
 
   def index
-    @picture_books = PictureBook.all
+    @picture_books = PictureBook.page(params[:page]).reverse_order
     @picture_book = PictureBook.new
   end
 

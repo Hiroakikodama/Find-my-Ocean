@@ -15,7 +15,7 @@ class DiariesController < ApplicationController
   end
 
   def index
-    @diaries = Diary.all
+    @diaries = Diary.page(params[:page]).reverse_order
     @diary = Diary.new
   end
 

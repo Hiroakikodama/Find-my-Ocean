@@ -1,7 +1,7 @@
-<div class="border rounded">
-<h5>プロフィール</h5>
+  <div class="border rounded">
+    <h5>プロフィール</h5>
 	<table>
-		<tr><%= attachment_image_tag user, :image, size: "100x100", fallback: "no_image.jpg" %></tr>
+		<tr><%= attachment_image_tag user, :image, class: "img-circle pull-left" , size: "100x100", fallback: "no_image.jpg" %></tr>
 		<tr>
 			<th>ユーザーネーム</th>
             <th><%= user.name %></th>
@@ -12,8 +12,64 @@
 		</tr>
 	</table>
 	<div class="row">
-		<% if @user.id == current_user.id %>
+		<% if user.id == current_user.id %>
 		<%= link_to "プロフィール編集", edit_user_path(current_user), class:"btn btn-block btn-base-1 mt-20" %>
 		<% end %>
 	</div>
-</div>
+	    <div class="title">
+		<h5>Favorite Place</h5>
+    </div>
+    <div class="serch">
+        <input id="address" type="textbox" placeholder="何か入力">
+        <input type="button" value="検索" onclick="codeAddress()">
+    </div>
+    <div id='map'></div>
+	<style>
+		#map {
+        height: 300px;
+        width: auto;
+        margin: 5px;
+        border: solid 1px #C0C0C0;
+        border-radius: 5px;
+        }
+	</style>
+	<script>
+        let map
+        let geocorder
+        const display = document.getElementById('display')
+
+        function initMap(){
+        geocoder = new google.maps.Geocoder()
+
+        map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 35.666658, lng:139.808224},
+        zoom: 16,
+        });
+
+        marker = new google.maps.Marker({
+        position:  {lat: 40.7828, lng:-73.9653},
+        map: map
+        });
+        }
+
+        function codeAddress(){
+        let inputAddress = document.getElementById('address').value;
+
+        geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+        if (status == 'OK') {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+        map: map,
+        position: results[0].geometry.location
+        });
+
+        } else {
+
+        alert('該当する結果がありませんでした：' + status);
+        }
+        });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh4CgdG_yZvqonBC-yBeRahzVHCklM720&callback=initMap" async defer></script>
+  </div>

@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col col-md-4"><%= render 'users/sidebar', user: current_user %></div>
 		<div class="col col-md-8">
-          <div>
+          <div class="create_area">
             <h5>New PictureBook</h5>
             <%= form_with(model: @picture_book) do |f| %>
             <h5>写真</h5>
@@ -13,11 +13,11 @@
             <%= f.text_field :point, class:"form-control", placeholder:"釣った場所" %>
             <h5>説明</h5>
             <%= f.text_area :discription, class:"form-control", placeholder:"魚の説明" %>
-            <%= f.submit "作成", class:"btn btn-flat-stripe" %>
+            <%= f.submit "作成", class:"btn btn-sticky" %>
             <% end %>
           </div>
             <h5>PictureBooks</h5>
-			<div class="border">
+			<div class="index_area">
 				<% @picture_books.each do |picture_book| %>
 				<div class="picture_book-item clearfix">
 					<section class="picture_book-text">
@@ -27,6 +27,7 @@
 					</section>
 				</div>
 				<% end %>
+				<div class="paginate"><%= paginate @picture_books %></div>
 			</div>
 		</div>
 	</div>
