@@ -1,38 +1,34 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col col-md-4"><div class="sidebar_fixed"><%= render 'users/sidebar', user: current_user %></div></div>
-		<div class="col col-md-8">
-			<div class="content-area">
-				<div class="border rounded" style="padding: 10px;">
-				<h5>Diaries</h5>
+		<div class="col col-md-4 px-0"><div class="sidebar_fixed"><%= render 'users/sidebar', user: current_user %></div></div>
+		<div class="col col-md-8 px-0">
+			<div class="content_area">
+				<h5 style="color: white;">Diaries</h5>
 				<% @diaries.each do |diary| %>
 				<ul>
-					<li><%= link_to diary.diary_title, diary_path(diary) %></li>
-					<%= diary.created_at.strftime('%Y/%m/%d') %>
+					<li><%= link_to diary.diary_title, diary_path(diary), class: "text-light" %></li>
+					<span class="author-date"><%= diary.created_at.strftime('%Y/%m/%d') %></span>
 				</ul>
 				<% end %>
 				<div class="paginate"><%= paginate @diaries %></div>
-			    </div>
 			</div>
-			<div class="content-area">
-			    <div class="border rounded" style="padding: 10px;">
-			    	<h5>PictureBooks</h5>
-			    	<div class="d-flex">
-				        <% @picture_books.each do |picture_book| %>
-				        <ul style="list-style: none;">
-				            <li><%= attachment_image_tag picture_book, :image, size: "50x50", fallback: "no-image-mini.jpg" %></li>
-				            <li><%= link_to picture_book.fish_name, picture_book_path(picture_book) %></li>
-				        </ul>
-				        <% end %>
-				    </div>
-				    <div class="paginate"><%= paginate @picture_books %></div>
+			<div class="content_area">
+		    	<h5 style="color: white;">PictureBooks</h5>
+		    	<div class="d-flex">
+			        <% @picture_books.each do |picture_book| %>
+			        <ul style="list-style: none;">
+			            <li><%= attachment_image_tag picture_book, :image, size: "50x50", fallback: "no-image-mini.jpg" %></li>
+			            <li><%= link_to picture_book.fish_name, picture_book_path(picture_book), class: "text-light" %></li>
+			        </ul>
+			        <% end %>
 			    </div>
+			    <div class="paginate"><%= paginate @picture_books %></div>
 			</div>
-			<div class="content-area">
-			    <h5>CheckLists</h5>
-			    <div class="border rounded">
+			<div class="content_area">
+			    <h5 style="color: white;">CheckLists</h5>
+			    <div class="">
 				    <% @check_lists.each do |check_list| %>
-				    <%= check_list.list_title %>
+				    <span style="color: white;"><%= check_list.list_title %></span>
 				    <% end %>
 				    <div class="paginate"><%= paginate @check_lists %></div>
 			    </div>

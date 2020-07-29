@@ -1,17 +1,17 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col col-4">
+		<div class="col col-md-4 px-0">
 			<%= render 'users/sidebar', user: current_user %>
 		</div>
-		<div class="col col-8">
+		<div class="col col-md-8 px-0 show_area">
 			<div class="title">
-			    <h5 style="text-decoration:underline;"><%= @picture_book.fish_name %></h5>
+			    <h5 style="text-decoration:underline; margin-left: 15px; color: white;"><%= @picture_book.fish_name %></h5>
 			    <ul style="list-style: none;">
                   <li class="author-date"><%= @picture_book.user.name %></li>
                   <li class="author-date"><%= @picture_book.created_at.strftime('%Y/%m/%d') %></li>
                 </ul>
             </div>
-			<div class="image">
+			<div class="image_area">
 			    <%= attachment_image_tag @picture_book, :image, size: "600x400", fallback: "no-image-mini.jpg" %>
 			</div>
 			<div class="comment">

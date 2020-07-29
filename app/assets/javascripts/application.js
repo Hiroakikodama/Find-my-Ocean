@@ -16,3 +16,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+
+function resizeHeight() {
+    var height = $('.fixed-top').outerHeight();
+    // bodyのpaddingにnavbarの高さを設定する
+    $('body').css('padding-top',height); 
+}
+$(window).on("load resize", resizeHeight);
+$(document).on('turbolinks:load', resizeHeight);

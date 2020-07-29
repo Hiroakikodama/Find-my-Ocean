@@ -1,14 +1,12 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="font_change col text-center background_image" style="margin-top: 50px;">
+    <div class="font_change col text-center" style="margin-bottom: 15px;">
+      <span><%= image_tag('logo.jpg') %></span>
       <h4>このサイトは全ての釣り人がより釣りを楽しむためのサイトです。<br><br>
 		      釣果日記、釣り上げた魚の図鑑、次の釣りへの準備、他のアングラーの釣果、etc...<br><br>
 		      釣りを楽しむ上で知りたい情報を一つにまとめ、より充実した趣味の時間を作りませんか？<br><br>
 		      このサイトがあなたの釣りの手助けになれたら幸いです。<br>
       </h4>
-
-      <br>
-
       <div class="btn">
         <%= link_to "新規登録", new_user_registration_path, class: "top_btn btn btn-outline-primary" %>
         <%= link_to "サインイン", new_user_session_path, class: "top_btn btn btn-outline-success" %>

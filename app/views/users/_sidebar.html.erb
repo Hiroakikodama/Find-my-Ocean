@@ -1,9 +1,9 @@
-  <div class="border rounded">
+  <div class="sidebar">
     <h5>プロフィール</h5>
 	<table>
 		<tr><%= attachment_image_tag user, :image, class: "img-circle pull-left" , size: "100x100", fallback: "no_image.jpg" %></tr>
 		<tr>
-			<th>ユーザーネーム</th>
+			<th>ユーザー<br>ネーム</th>
             <th><%= user.name %></th>
 		</tr>
 		<tr>
@@ -11,12 +11,13 @@
 			<th><%= user.introduction %></th>
 		</tr>
 	</table>
-	<div class="row">
+	<div class="row justify-content-center">
 		<% if user.id == current_user.id %>
-		<%= link_to "プロフィール編集", edit_user_path(current_user), class:"btn btn-block btn-base-1 mt-20" %>
+		<%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-sticky" %>
 		<% end %>
 	</div>
-	    <div class="title">
+    <br>
+	<div class="title">
 		<h5>Favorite Place</h5>
     </div>
     <div class="serch">
@@ -71,5 +72,5 @@
         }
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDh4CgdG_yZvqonBC-yBeRahzVHCklM720&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
   </div>
