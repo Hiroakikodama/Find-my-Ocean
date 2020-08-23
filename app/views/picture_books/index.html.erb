@@ -1,2 +1,34 @@
-<h1>PictureBooks#index</h1>
-<p>Find me in app/views/picture_books/index.html.erb</p>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col col-md-4 px-0"><%= render 'users/sidebar', user: current_user %></div>
+		<div class="col col-md-8 px-0">
+          <div class="content_area">
+            <h5 style="color: white;">New PictureBook</h5>
+            <%= form_with(model: @picture_book) do |f| %>
+            <h5 style="color: white;">写真</h5>
+            <%= f.attachment_field :image %>
+            <h5 style="margin-top: 5px; color: white;">名前</h5>
+            <%= f.text_field :fish_name, class:"form-control", placeholder:"魚の名前" %>
+            <h5 style="margin-top: 5px; color: white;">フィッシングポイント</h5>
+            <%= f.text_field :point, class:"form-control", placeholder:"釣った場所" %>
+            <h5 style="margin-top: 5px; color: white;">説明</h5>
+            <%= f.text_area :discription, class:"form-control", placeholder:"魚の説明" %>
+            <%= f.submit "作成", class:"btn btn-sticky" %>
+            <% end %>
+          </div>
+		  <div class="content_area">
+			<h5 style="color: white;">PictureBooks</h5>
+			<% @picture_books.each do |picture_book| %>
+			<div class="picture_book-item clearfix">
+			  <section class="picture_book-text">
+			    <%= attachment_image_tag picture_book, :image, size: "50x50", fallback: "no-image-mini.jpg" %>
+				<h5 class=""><%= link_to picture_book.fish_name, picture_book_path(picture_book), class: "text-light" %></h5>
+				<p class="author-date"><%= picture_book.created_at %></p>
+			  </section>
+			</div>
+			<% end %>
+			<div class="paginate"><%= paginate @picture_books %></div>
+		  </div>
+		</div>
+	</div>
+</div>

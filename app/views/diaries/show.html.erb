@@ -1,6 +1,29 @@
-<h1><%= @diary.diary_title %></h1>
-<h1><%= @diary.diary_body %></h1>
-<%# @diary.diary_images.each do |di| %>
-<%= attachment_image_tag @diary.diary_images.first, :image, size: "50x50", fallback: "no-image-mini.jpg" %>
-<%# end %>
-<%= @diary.diary_images.inspect %>
+<div class="container-fluid">
+	<div class="row">
+		<div class="col col-md-4 px-0"><%= render 'users/sidebar', user: current_user %></div>
+		<div class="col col-md-8 px-0 show_area">
+      <div class="title">
+        <h5 style="text-decoration:underline; margin-left: 15px; color: white;"><%= @diary.diary_title %></h5>
+        <ul style="list-style: none;">
+          <li class="author-date"><%= @diary.user.name %></li>
+          <li class="author-date"><%= @diary.created_at.strftime('%Y/%m/%d') %></li>
+        </ul>
+      </div>
+      <div class="image_area">
+        <% @diary.diary_images.each do |di| %>
+        <%= attachment_image_tag di, :image, size: "600x400", fallback: "no-image-mini.jpg" %>
+        <% end %>
+      </div>
+      <div class="comment">
+        <p><%= @diary.diary_body %></p>
+      </div>
+      <br>
+      <div class="action" style="margin-bottom: 15px;">
+      <%= link_to '一覧に戻る', diaries_path, class:'btn btn-success' %>
+      <% if @diary.user == current_user %>
+        <%= link_to "削除", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>

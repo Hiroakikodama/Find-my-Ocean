@@ -7,20 +7,21 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+    <div class="fixed-top d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <div class="header_title my-0 mr-md-auto font-weight-normal">
-      <h1>Find my Ocean</h1>
+      <span><%= image_tag('title_logo.jpg') %></span>
     </div>
-      <nav class="my-2 my-md-0 mr-md-3">
+      <nav class="my-2 my-md-0 mr-md-3 navbar navbar-inverse navbar-fixed-top　bg-primary" role="navigation">
       <% if user_signed_in? %>
         <%= link_to "マイページ", user_path(current_user), class: "p-2 text-dark" %>
-        <%= link_to "釣り人一覧", users_path, class: "p-2 text-dark" %>
+        <%#= link_to "釣り人一覧", users_path, class: "p-2 text-dark" %>
         <%= link_to "日記", diaries_path, class: "p-2 text-dark" %>
         <%= link_to "図鑑", picture_books_path, class: "p-2 text-dark" %>
-        <%= link_to "チェックリスト", "check_lists", class: "p-2 text-dark" %>
+        <%= link_to "チェックリスト", check_lists_path, class: "p-2 text-dark" %>
         <%= link_to "ログアウト", destroy_user_session_path, class: "p-2 text-dark", method: :delete %>
       <% else %>
         <%= link_to "新規登録", new_user_registration_path, class: "p-2 text-dark" %>
@@ -30,5 +31,7 @@
   </div>
     <%= yield %>
   </body>
-  <footer></footer>
+  <footer>
+    <div class="footer_div fixed-bottom"></div>
+  </footer>
 </html>
