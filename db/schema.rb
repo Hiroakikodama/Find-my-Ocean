@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_26_150052) do
+ActiveRecord::Schema.define(version: 2020_07_26_141805) do
 
   create_table "check_lists", force: :cascade do |t|
     t.integer "user_id"
