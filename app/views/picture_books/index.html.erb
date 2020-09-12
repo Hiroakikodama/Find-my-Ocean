@@ -21,9 +21,9 @@
 			<% @picture_books.each do |picture_book| %>
 			<div class="picture_book-item clearfix">
 			  <section class="picture_book-text">
-			    <%= attachment_image_tag picture_book, :image, size: "50x50", fallback: "no-image-mini.jpg" %>
+			    <%= attachment_image_tag picture_book, :image, size: "100x100", fallback: "no-image-mini.jpg" %>
 				<h5 class=""><%= link_to picture_book.fish_name, picture_book_path(picture_book), class: "text-light" %></h5>
-				<p class="author-date"><%= picture_book.created_at %></p>
+				<p class="author-date"><%= picture_book.created_at.strftime('%Y/%m/%d') %></p>
 			  </section>
 			</div>
 			<% end %>

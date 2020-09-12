@@ -10,6 +10,7 @@
       <div class="btn">
         <%= link_to "新規登録", new_user_registration_path, class: "top_btn btn btn-outline-primary" %>
         <%= link_to "サインイン", new_user_session_path, class: "top_btn btn btn-outline-success" %>
+        <%= link_to 'ゲストログイン', users_guest_sign_in_path, class: "top_btn btn btn-success", method: :post %>
       </div>
     </div>
   </div>

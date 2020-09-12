@@ -10,4 +10,10 @@ class User < ApplicationRecord
   has_many :picture_books, dependent: :destroy
 
   attachment :image
+
+  def self.guest
+    find_or_create_by!(name: 'guset_user', email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+    end
+  end
 end

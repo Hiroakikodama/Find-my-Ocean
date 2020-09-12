@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def show
-  	@diaries = Diary.page(params[:page]).reverse_order
-  	@picture_books = PictureBook.page(params[:page]).reverse_order
-  	@check_lists = CheckList.page(params[:page]).reverse_order
     @user = User.find(params[:id])
+    @diaries = Diary.page(params[:page]).reverse_order
+    @picture_books = PictureBook.page(params[:page]).reverse_order
+    @check_lists = CheckList.page(params[:page]).reverse_order
   end
 
   def index
@@ -22,6 +22,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-  	params.require(:user).permit(:name, :introduction, :image)
+    params.require(:user).permit(:name, :introduction, :image)
   end
 end
