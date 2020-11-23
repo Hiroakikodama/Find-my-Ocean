@@ -1,26 +1,26 @@
   <div class="sidebar">
-    <h5>プロフィール</h5>
-	<table>
-		<tr><%= attachment_image_tag user, :image, class: "img-circle pull-left" , size: "100x100", fallback: "no_image.jpg" %></tr>
-		<tr>
-			<th>ユーザー<br>ネーム</th>
+    <div class="profile">
+      <h5>プロフィール</h5>
+      <table>
+	    <tr><%= attachment_image_tag user, :image, class: "img-circle pull-left" , size: "100x100", fallback: "no_image.jpg" %></tr>
+	    <tr>
+            <th>ユーザー<br>ネーム</th>
             <th><%= user.name %></th>
 		</tr>
 		<tr>
 			<th>自己紹介</th>
 			<th><%= user.introduction %></th>
 		</tr>
-	</table>
-	<div class="row justify-content-center">
+	  </table>
+    </div>
+	<div class="justify-content-center">
 		<% if user.id == current_user.id %>
 		<%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-sticky" %>
 		<% end %>
 	</div>
     <br>
-	<div class="title">
-		<h5>Favorite Place</h5>
-    </div>
     <div class="serch">
+      <h5>Favorite Place</h5>
         <input id="address" type="textbox" placeholder="検索">
         <input type="button" value="検索" onclick="codeAddress()">
     </div>
