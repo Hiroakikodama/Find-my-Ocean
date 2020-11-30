@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="error_message">
+      <% if @picture_book.errors.any? %>
+        <div id="error_explanation">
+        	<h2><%= @picture_book.errors.count %>件のエラーが発生しました。</h2>
+        	<ul>
+        		<%= @picture_book.errors.full_messages.each do |message| %>
+        		<li><%= message %></li>
+        		<% end %>
+        	</ul>
+        </div>
+      <% end %>
+    </div>
+    <div class="row">
+        <div class="col col-md-8">
+            <%= form_with(model: @picture_book) do |f| %>
+            <h5>写真</h5>
+            <%= f.attachment_field :image %>
+            <h5>名前</h5>
+            <%= f.text_field :fish_name, class:"form-control", placeholder:"魚の名前" %>
+            <h5>フィッシングポイント</h5>
+            <%= f.text_field :point, class:"form-control", placeholder:"釣った場所" %>
+            <h5>説明</h5>
+            <%= f.text_area :discription, class:"form-control", placeholder:"魚の説明" %>
+            <%= f.submit "作成", class:"btn btn-flat-stripe" %>
+            <% end %>
+        </div>
+    </div>

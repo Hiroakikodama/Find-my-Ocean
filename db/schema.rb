@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_25_213725) do
+ActiveRecord::Schema.define(version: 2020_07_26_141805) do
 
   create_table "check_lists", force: :cascade do |t|
     t.integer "user_id"
@@ -32,7 +32,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_213725) do
     t.text "diary_body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image_id"
   end
 
   create_table "diary_images", force: :cascade do |t|
@@ -45,13 +44,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_213725) do
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "diary_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "picture_book_images", force: :cascade do |t|
-    t.string "image_id"
-    t.integer "picture_book_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,13 +62,6 @@ ActiveRecord::Schema.define(version: 2020_07_25_213725) do
     t.text "comment"
     t.integer "user_id"
     t.integer "diary_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "profile_images", force: :cascade do |t|
-    t.string "image_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

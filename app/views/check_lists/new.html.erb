@@ -1,2 +1,15 @@
-<h1>CheckLists#new</h1>
-<p>Find me in app/views/check_lists/new.html.erb</p>
+<%= form_with(model: @check_list, local: true) do |s| %>
+    <%= s.label :リストタイトル %>
+    <%= s.text_field :list_title %>
+    <div class="check_list">
+    	<%= s.fields_for :checks do |t| %>
+    	    <%= render "check_fields", f: t %>
+    	<% end %>
+    	<div class="links">
+    		<%= link_to_add_association "項目を追加", s, :checks %>
+    	</div>
+    </div>
+    <div class="btn">
+    	<%= s.submit %>
+    </div>
+<% end %>

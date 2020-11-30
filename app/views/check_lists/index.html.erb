@@ -1,2 +1,3 @@
-<h1>CheckLists#index</h1>
-<p>Find me in app/views/check_lists/index.html.erb</p>
+<% @check_lists.each do |cl| %>
+    <%= link_to cl.list_title, check_list_path(cl) %>
+<% end %>
